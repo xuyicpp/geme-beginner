@@ -1,0 +1,25 @@
+﻿生成启动时间为 2018/11/22 11:36:36。
+     1>项目“C:\Users\Admin\Desktop\Zero\D3Ddemo11\D3Ddemo11\D3Ddemo11.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在对“Debug\D3Ddemo11.unsuccessfulbuild”执行 Touch 任务。
+       ClCompile:
+         D:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
+     1>c:\users\admin\desktop\zero\d3ddemo11\d3ddemo11\main.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>c:\users\admin\desktop\zero\d3ddemo11\d3ddemo11\main.cpp(113): error C2146: 语法错误: 缺少“)”(在标识符“XY鐨勬秷鎭獥鍙”的前面)
+     1>c:\users\admin\desktop\zero\d3ddemo11\d3ddemo11\main.cpp(113): error C2660: “MessageBoxW”: 函数不接受 2 个参数
+     1>c:\users\admin\desktop\zero\d3ddemo11\d3ddemo11\main.cpp(113): error C2059: 语法错误:“)”
+     1>c:\users\admin\desktop\zero\d3ddemo11\d3ddemo11\main.cpp(568): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>c:\users\admin\desktop\zero\d3ddemo11\d3ddemo11\main.cpp(581): error C2001: 常量中有换行符
+     1>c:\users\admin\desktop\zero\d3ddemo11\d3ddemo11\main.cpp(582): error C2143: 语法错误 : 缺少“)”(在“常量”的前面)
+     1>c:\users\admin\desktop\zero\d3ddemo11\d3ddemo11\main.cpp(582): error C2660: “ID3DXFont::DrawTextW”: 函数不接受 2 个参数
+     1>c:\users\admin\desktop\zero\d3ddemo11\d3ddemo11\main.cpp(582): error C2059: 语法错误:“)”
+     1>c:\users\admin\desktop\zero\d3ddemo11\d3ddemo11\main.cpp(593): error C2001: 常量中有换行符
+     1>c:\users\admin\desktop\zero\d3ddemo11\d3ddemo11\main.cpp(594): error C2143: 语法错误 : 缺少“)”(在“常量”的前面)
+     1>c:\users\admin\desktop\zero\d3ddemo11\d3ddemo11\main.cpp(594): error C2660: “ID3DXFont::DrawTextW”: 函数不接受 2 个参数
+     1>c:\users\admin\desktop\zero\d3ddemo11\d3ddemo11\main.cpp(594): error C2059: 语法错误:“)”
+     1>已完成生成项目“C:\Users\Admin\Desktop\Zero\D3Ddemo11\D3Ddemo11\D3Ddemo11.vcxproj”(build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:01.26
