@@ -1,8 +1,6 @@
-﻿生成启动时间为 2018/10/25 15:02:39。
-     1>项目“C:\Users\Admin\Desktop\Zero\HelloVisualStudio\HelloVisualStudio\HelloVisualStudio.vcxproj”在节点 2 上(build 个目标)。
-     1>PrepareForBuild:
-         正在创建目录“C:\Users\Admin\Desktop\Zero\HelloVisualStudio\Debug\”。
-       InitializeBuildStatus:
+﻿生成启动时间为 2018/11/23 16:16:07。
+     1>项目“F:\github_project\geme-beginner\Windows游戏编程之从零开始\windows编程入门\HelloVisualStudio\HelloVisualStudio\HelloVisualStudio.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
          正在创建“Debug\HelloVisualStudio.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
        ClCompile:
          D:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
@@ -10,20 +8,19 @@
        ManifestResourceCompile:
          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\HelloVisualStudio.exe.embed.manifest.res" Debug\HelloVisualStudio_manifest.rc 
        Link:
-         D:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Admin\Desktop\Zero\HelloVisualStudio\Debug\HelloVisualStudio.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\HelloVisualStudio.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Admin\Desktop\Zero\HelloVisualStudio\Debug\HelloVisualStudio.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Admin\Desktop\Zero\HelloVisualStudio\Debug\HelloVisualStudio.lib" /MACHINE:X86 Debug\HelloVisualStudio.exe.embed.manifest.res
+         D:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\github_project\geme-beginner\Windows游戏编程之从零开始\windows编程入门\HelloVisualStudio\Debug\HelloVisualStudio.exe" /INCREMENTAL /NOLOGO winmm.lib dxerr.lib dxguid.lib d3dx9d.lib d3dx10d.lib d3d9.lib comctl32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\HelloVisualStudio.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"F:\github_project\geme-beginner\Windows游戏编程之从零开始\windows编程入门\HelloVisualStudio\Debug\HelloVisualStudio.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\github_project\geme-beginner\Windows游戏编程之从零开始\windows编程入门\HelloVisualStudio\Debug\HelloVisualStudio.lib" /MACHINE:X86 Debug\HelloVisualStudio.exe.embed.manifest.res
          Debug\main.obj
        Manifest:
          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\HelloVisualStudio.exe.embed.manifest" /manifest Debug\HelloVisualStudio.exe.intermediate.manifest
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\HelloVisualStudio.exe.embed.manifest.res" Debug\HelloVisualStudio_manifest.rc 
+         所有输出均为最新。
        LinkEmbedManifest:
-         D:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Admin\Desktop\Zero\HelloVisualStudio\Debug\HelloVisualStudio.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\HelloVisualStudio.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Admin\Desktop\Zero\HelloVisualStudio\Debug\HelloVisualStudio.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Admin\Desktop\Zero\HelloVisualStudio\Debug\HelloVisualStudio.lib" /MACHINE:X86 Debug\HelloVisualStudio.exe.embed.manifest.res
-         Debug\main.obj
-         HelloVisualStudio.vcxproj -> C:\Users\Admin\Desktop\Zero\HelloVisualStudio\Debug\HelloVisualStudio.exe
+         所有输出均为最新。
+         HelloVisualStudio.vcxproj -> F:\github_project\geme-beginner\Windows游戏编程之从零开始\windows编程入门\HelloVisualStudio\Debug\HelloVisualStudio.exe
        FinalizeBuildStatus:
          正在删除文件“Debug\HelloVisualStudio.unsuccessfulbuild”。
          正在对“Debug\HelloVisualStudio.lastbuildstate”执行 Touch 任务。
-     1>已完成生成项目“C:\Users\Admin\Desktop\Zero\HelloVisualStudio\HelloVisualStudio\HelloVisualStudio.vcxproj”(build 个目标)的操作。
+     1>已完成生成项目“F:\github_project\geme-beginner\Windows游戏编程之从零开始\windows编程入门\HelloVisualStudio\HelloVisualStudio\HelloVisualStudio.vcxproj”(build 个目标)的操作。
 
 生成成功。
 
-已用时间 00:00:04.21
+已用时间 00:00:03.00

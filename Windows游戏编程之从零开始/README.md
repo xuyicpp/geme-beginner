@@ -24,9 +24,10 @@
 有许多模型资源，可以替换项目中的模型为自己想要的模型
 
 ## 运行环境
-Operating System:Windows 7
-IDE:Visual Studio 2010
-DirectX SDK:[DXSDK_Jun10.exe](https://www.microsoft.com/en-us/download/details.aspx?id=6812)
+- Operating System:Windows 7
+- IDE:Visual Studio 2010
+- DirectX SDK:[DXSDK_Jun10.exe](https://www.microsoft.com/en-us/download/details.aspx?id=6812)
+- 项目：Win32窗口项目
 
 ## 参考文献
 - [本书配套的CSDN博客专栏](https://blog.csdn.net/zhmxy555/column/info/vc-game-programming)
