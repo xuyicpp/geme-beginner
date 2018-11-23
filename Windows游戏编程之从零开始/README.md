@@ -11,15 +11,22 @@
 
 我认为这本书主要由三部分构成：分别是windows编程入门、GDI2D游戏编程、DirectX3D游戏编程
 - [windows编程入门](https://github.com/xuyicpp/geme-beginner/tree/master/Windows%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E4%B9%8B%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/windows%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8)
-这部分主要讲解了如何创建一个完整的windows窗口程序,为后面两部分的内容打好基础。
+这部分主要讲解了如何创建一个完整的windows窗口程序,为后面两部分的图形都是在这个窗口进行绘制的。
 - [GDI2D游戏编程](https://github.com/xuyicpp/geme-beginner/tree/master/Windows%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E4%B9%8B%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/GDI2D%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B)
 这部分主要利用Windows自带的图形设备接口(Graphics Device Interface)进行一些2D贴图小游戏的开发。
 - [DirectX3D游戏编程](https://github.com/xuyicpp/geme-beginner/tree/master/Windows%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E4%B9%8B%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/DirectX3D%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B)
-这部分主要利用Microsoft DirectX进行3D大型游戏的开发入门。同时也介绍了如何将DirectX的API接口进行封装，然后包装成游戏引擎的部分模块。(例如摄像机、地形、天气等)
+这部分主要利用Microsoft DirectX进行3D大型游戏的开发入门。同时也介绍了如何将DirectX的API接口进行封装，然后包装成游戏引擎的部分模块。(例如摄像机模块、地形模块、天气模块等)
 
 ## 实用网址
 - [Windows文档的官网](https://docs.microsoft.com/en-us/previous-versions/windows/desktop)
 遇到看不懂的函数就可以在官网上进行查询
+- [模型网](http://www.cgmodel.com/)
+有许多模型资源，可以替换项目中的模型为自己想要的模型
+
+## 运行环境
+Operating System:Windows 7
+IDE:Visual Studio 2010
+DirectX SDK:[DXSDK_Jun10.exe](https://www.microsoft.com/en-us/download/details.aspx?id=6812)
 
 ## 参考文献
 - [本书配套的CSDN博客专栏](https://blog.csdn.net/zhmxy555/column/info/vc-game-programming)
