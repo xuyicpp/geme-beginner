@@ -68,6 +68,7 @@ int WINAPI MessageBox(_In_opt_ HWND hWnd, _In_opt_ LPCTSTR lpText,_In_opt_ LPCTS
 |枚举类型成员名用能反映其基础类型的。单数形式的前缀——例如，Color_Red，Color_Blue|Base_EnumberatedType|
 
 匈牙利命名法中常用的小写字母的前缀，如下表:
+
 |前缀写法|类型|描述|实例|
 |:-----|:-----|:-----|:-----|
 |ch|char|8位字符|chGrade|
