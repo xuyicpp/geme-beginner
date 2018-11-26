@@ -52,13 +52,51 @@ int WINAPI MessageBox(_In_opt_ HWND hWnd, _In_opt_ LPCTSTR lpText,_In_opt_ LPCTS
 消息框带有唯一一个按钮：OK。需要注意的是，MB_OK是系统默认的MessageBox样式。
 
 是不是对上面神奇的命名格式表示不解，我在这里就直接贴出一些，常用的命名规范，但注意我们可以遵守，但不要墨守成规。
-命名规则
+命名规则(适用于C++与Java)：
 
 | 描述       | 实例   |
 | :--------   | :-----   |
-| 香蕉        | $1      |
-| 苹果        | $1      |
-| 草莓        | $1      |
+| 类名混合使用大小写，首字母大写       | ClassName      |
+|类型定义，包括枚举和typedef，混合使用大小写，首字母大写|TypeName|
+|枚举类型除了混合使用大小写外，总以复数形式表示|EnumeratedTypes|
+|局部变量除了混合使用大小写外，且首字母小写，其名字应该与底层数据类型无关，而且应该反映该变量所代表的事物|localVariable|
+|子程序参数的格式混合使用大小写，且首字母大写，其名字应该与底层数据类型无关，而且应该反映该变量所代表的事物|RoutineParameter|
+|对类的多个子程序可见(且只对该类可见)的成员变量名用m_前缀|m_ClassVariable|
+|全局变量名用g_前缀|g_GlobalVariable|
+|具名常量全部大写|CONSTANT|
+|宏全部大写，单词间用分割符"_"隔开| SCREEN\_WIDTH |
+|枚举类型成员名用能反映其基础类型的。单数形式的前缀——例如，Color_Red，Color_Blue|Base_EnumberatedType|
+
+匈牙利命名法中常用的小写字母的前缀，如下表:
+|前缀写法|类型|描述|实例|
+|:-----|:-----|:-----|:-----|
+|ch|char|8位字符|chGrade|
+|ch|TCHAR| 如果\_UNICODE定义，则为16位字符|chName|
+|b|BOOL|布尔值|bEnable|
+|n|int|整形（其大小依赖于操作系统）|nLength|
+|n|UINT|无符号值（其大小依赖于操作系统）|nHeight|
+|w|WORD|16位无符号值|wPos|
+|l|LONG|32位有符号整型|lOffset|
+|dw|DWORD|32位无符号整型|dwRange|
+|p|\*|指针|pDoc|
+|lp|FAR\*|远指针|lpszName|(32位指针)
+|lpsz|LPSTR|32位字符串指针|lpszName|
+|lpsz|LPCSTR|32位常量字符串指针|lpszName|
+|lpsz|LPCTSTR|如果\_UNICODE定义，则为32位常量字符串指针|lpszName|
+|h|handle|Windows对象句柄|hWnd|
+|lpfn|callback|指向CALLBACK函数的远指针|lpfnName|
+
+关键字字符组合表格如下：
+
+| 描述内容       | 使用的关键字母组合   |
+| :--------   | :-----   |
+|最大值|Max|
+|最小值|Min|
+|初始化|Init|
+|临时变量|T(或Temp)|
+|源对象|Src|
+|目标对象|Dest|
+
 
 
 
