@@ -5,8 +5,10 @@
 
 ## HelloVisualStudio 
 这个项目就是认识一下Win32窗口程序，最终效果如下图，嗯，就是启动了一个MessageBox函数。
+
 ![](./Images/HelloVisualStudio.png)
-完整代码在此(因为代码较短我就直接贴出来了，后面代码较多的时候我就放项目目录了)
+
+完整代码在此(因为代码较短我就直接贴出来了，后面代码较多的时候我就放一些主要的函数就行了)
 ```
 #include <Windows.h>
 int WINAPI WinMain(  HINSTANCE hInstance,  HINSTANCE hPrevInstance,  LPSTR lpCmdLine, int nShowCmd )
@@ -21,7 +23,7 @@ int WINAPI WinMain(_In_ HINSTACE hInstance, _In_ HINSTANCE hPrevInstance, _In_ L
 ```
 首先介绍一下WINAPI(其实不用管)，这个就是_stdcall，只是为了让我们清楚知道这里的_stdcall表示的是一种调用约定，它让编译器知道了应当以Windows兼容的方式来产生机器指令。
 
-同理，_In_ 表示可以理解是一个宏，表示是一个输入参数，_Out_ 是一个输出参数，_In_opt_ 表示输入、可选的(optional)。
+同理，\_In\_ 表示可以理解是一个宏，表示是一个输入参数，\_Out\_ 是一个输出参数，\_In_opt\_ 表示输入、可选的(optional)。
 
 函数的第一个参数，HINSTANCE类型的hInstance，它表示该程序当前运行的实例句柄（其实就是一个ID号）。HINSTANCE 是“句柄型”数据类型。相当于装入到了内存的资源的ID。HINSTANCE对应的资源是instance.句柄实际上是一个 无符号长整数。但它是“句柄型”，所以你不能把它当成真的无符号长整数，拿来派别的用处，例如，不能拿来做四则运算。
 
@@ -35,7 +37,9 @@ int WINAPI WinMain(_In_ HINSTACE hInstance, _In_ HINSTANCE hPrevInstance, _In_ L
 ```
 int WINAPI MessageBox(_In_opt_ HWND hWnd, _In_opt_ LPCTSTR lpText,_In_opt_ LPCTSTR lpCaption,_In_ UINT uType);
 ```
-- 第一个参数，HWND类型的hWnd，h 是类型描述，表示句柄(handle)， Wnd 是变量对象描述，表示窗口，所以hWnd 表示窗口句柄，表示我们显示的消息框所属的窗口的句柄。 在Windows应用中，窗口都是通过窗口句柄(HWND)来标识的。我们要对某个窗口进行操作的话，首先就是要得到这个窗口的句柄。HANDLE（句柄）是Windows操作系统中的一个概念。在Windows程序中，有各种各样的资源（窗口、图标、光标等），系统在创建这些资源时会为它们分配内存，并返回标示这些资源的标示号，即句柄。<font color="red">句柄指的是一个核心对象在某一个进程中的唯一索引，而不是指针。</font>上古时期的程序员, 肯定都知道Handle对象, 一般中文翻译成句柄. 一般的Handle在实现上, 都是一个整数, 而这个整数可以理解为一个指针, 指针指向的地址呢, 又保存了另外一个指针. 之所以这么搞, 是因为这样搞可以让真实的对象可以挪动。
+- 第一个参数，HWND类型的hWnd，h 是类型描述，表示句柄(handle)， Wnd 是变量对象描述，表示窗口，所以hWnd 表示窗口句柄，表示我们显示的消息框所属的窗口的句柄。 在Windows应用中，窗口都是通过窗口句柄(HWND)来标识的。我们要对某个窗口进行操作的话，首先就是要得到这个窗口的句柄。HANDLE（句柄）是Windows操作系统中的一个概念。在Windows程序中，有各种各样的资源（窗口、图标、光标等），系统在创建这些资源时会为它们分配内存，并返回标示这些资源的标示号，即句柄。
+<font color="red">句柄指的是一个核心对象在某一个进程中的唯一索引，而不是指针。</font>
+上古时期的程序员, 肯定都知道Handle对象, 一般中文翻译成句柄. 一般的Handle在实现上, 都是一个整数, 而这个整数可以理解为一个指针, 指针指向的地址呢, 又保存了另外一个指针. 之所以这么搞, 是因为这样搞可以让真实的对象可以挪动。
 考虑一个一个对象A, 保存在Handle里面, 由于某种原因, 我需要把这个对象A从原来的位置移走, 那么移走之后的对象叫对象B, 那我只需要修改一下Handle里面的指针, 就可以保证正确性, 然后在用户看来, 还是同一个对象, 因为Handle没有改变。
 正是因为Handle这种特性, 所以可以基于Handle做一个GC系统. miloyip翻译的那本游戏编程的书里面也讲过, 之前在主机上有人用Handle来管理内存。
 
@@ -49,6 +53,7 @@ int WINAPI MessageBox(_In_opt_ HWND hWnd, _In_opt_ LPCTSTR lpText,_In_opt_ LPCTS
 
 是不是对上面神奇的命名格式表示不解，我在这里就直接贴出一些，常用的命名规范，但注意我们可以遵守，但不要墨守成规。
 命名规则
+
 | 描述       | 实例   |
 | :--------   | :-----   |
 | 香蕉        | $1      |
