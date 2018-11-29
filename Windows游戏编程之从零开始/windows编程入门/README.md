@@ -6,6 +6,8 @@
 ## HelloVisualStudio 
 这个项目就是认识一下Win32窗口程序，最终效果如下图，嗯，就是启动了一个MessageBox函数。
 
+关键词：WinMain，MessageBox
+
 ![](./Images/HelloVisualStudio.png)
 
 完整代码在此(因为代码较短我就直接贴出来了，后面代码较多的时候我就放一些主要的函数就行了)
@@ -17,6 +19,10 @@ int WINAPI WinMain(  HINSTANCE hInstance,  HINSTANCE hPrevInstance,  LPSTR lpCmd
 	return 0;
 }
 ```
+
+- [HelloVisualStudio源代码目录](https://github.com/xuyicpp/geme-beginner/tree/master/Windows%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E4%B9%8B%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/windows%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/HelloVisualStudio/HelloVisualStudio)
+
+
 下面就开始对WinMain函数进行介绍，在MSDN中查到它有如下原型
 ```
 int WINAPI WinMain(_In_ HINSTACE hInstance, _In_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nCmdShow);
@@ -44,6 +50,7 @@ int WINAPI MessageBox(_In_opt_ HWND hWnd, _In_opt_ LPCTSTR lpText,_In_opt_ LPCTS
 正是因为Handle这种特性, 所以可以基于Handle做一个GC系统. miloyip翻译的那本游戏编程的书里面也讲过, 之前在主机上有人用Handle来管理内存。
 
 - 第二个参数，LPCTSTR类型的lpText，它是一个以NULL结尾的字符串，表示所要显示的消息的内容。
+L"你好，Visual Studio! "其中L表示我们要把字符串"你好，Visual Studio! "转化为宽字符版。因为在Visual Studio中默认使用的是Unicode字符集。否则就会有不能将参数从const char[15]转换为LPCWSTR的错误。
 - 第三个参数，LPCTSTR类型的lpCaption，它也是一个以NULL结尾的字符串，在其中填我们要显示的消息框的标题的内容。
 - 第四个参数，UINT类型的uType，表示我们消息窗口需要什么样的样式。这里我们看到是0，其实它对应
 ```
@@ -98,8 +105,140 @@ int WINAPI MessageBox(_In_opt_ HWND hWnd, _In_opt_ LPCTSTR lpText,_In_opt_ LPCTS
 |源对象|Src|
 |目标对象|Dest|
 
+## FirstBlood!
+一个播放Dota中拿下第一个人头时“Firstblood！”音效的实例程序。
+
+关键词：PlaySound，链接
+
+![](./Images/FirstBlood!.png)
 
 
+```
+#include <Windows.h>
+#pragma comment(lib,"winmm.lib")
+int WINAPI WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance,LPSTR lpCmdLine,int nCmdShow)
+{
+	PlaySound(L"FirstBlood.wav",NULL,SND_FILENAME | SND_ASYNC);	//播放音效
+	MessageBox(NULL,L"First blood! 你好，游戏开发的世界，我们来征服你了！",L"First blood! 消息窗口",0);//显示一个消息框
+	return 0;
+}
+```
+- [FirstBlood!源代码目录](https://github.com/xuyicpp/geme-beginner/tree/master/Windows%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E4%B9%8B%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/windows%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/FirstBlood!/FirstBlood!)
 
-- [HelloVisualStudio源代码目录](https://github.com/xuyicpp/geme-beginner/tree/master/Windows%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E4%B9%8B%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/windows%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/HelloVisualStudio/HelloVisualStudio)
+
+一般高级语言程序编译的过程：预处理、编译、汇编、链接。作者在P51提到的“如果要使用PlaySound函数的话，必须在编译之前链接winmm.lib库文件。这里我觉得措辞应该改为在程序中声明。
+可以在MSDN中查到PlaySound函数的定义如下：
+```
+BOOL PlaySound(LPCTSTR pszSound, HMODULE hmod, DWORD fdwSound);
+```
+具体的参数名，上面的表格都有提到，这里就不做过多的介绍了。
+
+## GameCore
+
+![](./Images/GameCore.png)
+
+
+```
+//------------------------------【程序说明】-----------------------------
+// 程序名称：GameCore
+// 2018年3月Creat by XY
+// 描述：用代码勾勒出游戏开发所需的程序框架
+//-----------------------------------------------------------------------
+
+
+//------------------------------【头文件包含部分】-----------------------
+//描述：包含程序所依赖的头文件
+//-----------------------------------------------------------------------
+#include <windows.h>
+
+//------------------------------【宏定义部分】---------------------------
+//描述：定义一些辅助宏
+//-----------------------------------------------------------------------
+#define WINDOW_WIDTH 800
+#define WINDOW_HEIGHT 600
+#define WINDOW_TITLE L"【致我们永不熄灭的游戏开发梦想】程序核心框架"	//为窗口标题定义的宏
+
+//------------------------------【全局函数声明部分】---------------------
+//描述：全局函数声明，防止“未声明的标识”系列错误
+//-----------------------------------------------------------------------
+LRESULT CALLBACK  WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lparam);	//窗口过程函数
+
+//------------------------------【WinMain（）函数】-----------------------
+//描述：Windows应用程序的入口函数，我们的程序从这里开始
+//------------------------------------------------------------------------
+int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd )
+{
+	//【1】窗口创建四部曲之一：开始设计一个完整的窗口类
+	WNDCLASSEX wndClass = { 0 };	//用WINDCLASSEX定义一个窗口类
+	wndClass.cbSize = sizeof(WNDCLASSEX);	//设置结构体的字节数大小
+	wndClass.style = CS_HREDRAW | CS_VREDRAW;	//设置窗口的样式
+	wndClass.lpfnWndProc = WndProc;		//设置指向窗口过程函数的指针
+	wndClass.cbClsExtra = 0;		//窗口类的附加内存，取0就可以了
+	wndClass.cbWndExtra = 0;		//窗口的附加内存，依然取0就可以了
+	wndClass.hInstance = hInstance;	//指定包含窗口过程的程序的实例句柄
+	wndClass.hIcon = (HICON)::LoadImage(NULL,L"icon.ico",IMAGE_ICON,0,0,LR_DEFAULTSIZE|LR_LOADFROMFILE);	//本地加载自定义ico图标
+	wndClass.hCursor = LoadCursor(NULL, IDC_ARROW);		//指定窗口类的光标句柄
+	wndClass.hbrBackground = (HBRUSH)GetStockObject(GRAY_BRUSH); 	//为hbrBackground成员指定一个灰色画刷句柄
+	wndClass.lpszMenuName = NULL;	//用一个以空终止的字符串，指定菜单资源的名字
+	wndClass.lpszClassName = L"ForTheDreamOfGameDevelop";	//用一个以空终止的字符串，指定窗口类的名字。
+
+	//【2】窗口创建四部曲之二：注册窗口类
+	 if( !RegisterClassEx(&wndClass))
+		 return -1;
+
+	 //【3】窗口创建四部曲之三：正式创建窗口
+	 HWND hwnd = CreateWindow(L"ForTheDreamOfGameDevelop",WINDOW_TITLE,	//创建窗口函数CreateWindow
+		 WS_OVERLAPPEDWINDOW,CW_USEDEFAULT,CW_USEDEFAULT,WINDOW_WIDTH,
+		 WINDOW_HEIGHT,NULL,NULL,hInstance,NULL);
+
+	 //【4】窗口创建四步曲之四：窗口的移动、显示与更新
+	 MoveWindow(hwnd,250,80,WINDOW_WIDTH,WINDOW_HEIGHT,true);	//调整窗口显示时的位置，使窗口左上角位于(250,80)处
+	 ShowWindow(hwnd,nShowCmd);	//调用ShowWindow函数来显示窗口
+	 UpdateWindow(hwnd);	//对窗口进行更新，就像我们买了房子要装修一样
+
+	 //【5】消息循环过程
+	 MSG msg = {0};	//定义并初始化msg
+	 while(msg.message != WM_QUIT)	//使用while循环，如果消息不是WM_QUIT，就继续循环
+	 {
+		if(PeekMessage(&msg,0,0,0,PM_REMOVE))	//查看应用程序消息队列，有消息时将队列中的消息派发出去
+		{
+			TranslateMessage(&msg);	//将虚拟键消息转换为字符消息
+			DispatchMessage(&msg);	//分发一个消息给窗口程序
+		}
+	 }
+
+	 //【6】窗口类的注销
+	 UnregisterClass(L"ForTheDreamOfGameDevelop",wndClass.hInstance);	//程序准备结束，注销窗口类
+	 return 0;
+}
+
+//---------------------------------【WndProc()函数】-------------------------------------
+//描述：窗口过程函数WndProc，对窗口消息进行处理
+//---------------------------------------------------------------------------------------
+LRESULT CALLBACK  WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+	switch(message)	//switch语句开始
+	{
+	case WM_PAINT:	//若是客户区重绘消息
+		ValidateRect(hwnd,NULL);	//更新客户区的显示
+		break;	
+	case WM_KEYDOWN:
+		if(wParam == VK_ESCAPE)	//如果按下的键是ESC
+			DestroyWindow(hwnd);	//销毁窗口，并发送一条WM_DESTROY消息
+		break;
+
+	case WM_DESTROY:
+		PostQuitMessage(0);	//向系统表明有个线程有终止请求。用来响应WM_DESTROY消息
+		break;		//跳出该switch语句
+
+	default:	//若上述case条件都不符合
+		return DefWindowProcW(hwnd,message,wParam,lParam);	//调用默认的窗口过程
+	}
+
+	return 0;
+}
+```
+
+- [GameCore源代码目录](https://github.com/xuyicpp/geme-beginner/tree/master/Windows%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E4%B9%8B%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/windows%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/GameCore/GameCore)
+
 

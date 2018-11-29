@@ -55,7 +55,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
 	 ShowWindow(hwnd,nShowCmd);	//调用ShowWindow函数来显示窗口
 	 UpdateWindow(hwnd);	//对窗口进行更新，就像我们买了房子要装修一样
 
-	 //【消息】循环过程
+	 //【5】消息循环过程
 	 MSG msg = {0};	//定义并初始化msg
 	 while(msg.message != WM_QUIT)	//使用while循环，如果消息不是WM_QUIT，就继续循环
 	 {
