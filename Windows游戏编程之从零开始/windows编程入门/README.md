@@ -119,7 +119,8 @@ L"你好，Visual Studio! "其中L表示我们要把字符串"你好，Visual St
 int WINAPI WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance,LPSTR lpCmdLine,int nCmdShow)
 {
 	PlaySound(L"FirstBlood.wav",NULL,SND_FILENAME | SND_ASYNC);	//播放音效
-	MessageBox(NULL,L"First blood! 你好，游戏开发的世界，我们来征服你了！",L"First blood! 消息窗口",0);//显示一个消息框
+	//显示一个消息框
+	MessageBox(NULL,L"First blood! 你好，游戏开发的世界，我们来征服你了！",L"First blood! 消息窗口",0);
 	return 0;
 }
 ```
@@ -135,9 +136,38 @@ BOOL PlaySound(LPCTSTR pszSound, HMODULE hmod, DWORD fdwSound);
 
 ## GameCore
 
+窗口代码，后面学习GDI和DirectX游戏编程时所用的基本框架
+
+关键词：
+
+1、Windows窗口程序的书写思路——WinMain函数，窗口创建四部曲、消息循环、窗口类的注销、窗口过程函数
+
+2、窗口创建四部曲：窗口类的设计、窗口类的注册、窗口的正式创建、窗口的显示与更新
+
 ![](./Images/GameCore.png)
 
+### 【1】窗口创建四部曲之一：开始设计一个完整的窗口类
+```
+WNDCLASSEX wndClass = { 0 };	//用WINDCLASSEX定义一个窗口类
+	wndClass.cbSize = sizeof(WNDCLASSEX);	//设置结构体的字节数大小
+	wndClass.style = CS_HREDRAW | CS_VREDRAW;	//设置窗口的样式
+	wndClass.lpfnWndProc = WndProc;		//设置指向窗口过程函数的指针
+	wndClass.cbClsExtra = 0;		//窗口类的附加内存，取0就可以了
+	wndClass.cbWndExtra = 0;		//窗口的附加内存，依然取0就可以了
+	wndClass.hInstance = hInstance;	//指定包含窗口过程的程序的实例句柄
+	wndClass.hIcon = (HICON)::LoadImage(NULL,L"icon.ico",IMAGE_ICON,0,0,LR_DEFAULTSIZE|LR_LOADFROMFILE);	//本地加载自定义ico图标
+	wndClass.hCursor = LoadCursor(NULL, IDC_ARROW);		//指定窗口类的光标句柄
+	wndClass.hbrBackground = (HBRUSH)GetStockObject(GRAY_BRUSH); 	//为hbrBackground成员指定一个灰色画刷句柄
+	wndClass.lpszMenuName = NULL;	//用一个以空终止的字符串，指定菜单资源的名字
+	wndClass.lpszClassName = L"ForTheDreamOfGameDevelop";	//用一个以空终止的字符串，指定窗口类的名字。
+```
+这里就是创建一个WNDCLASSEX类，然后填好的各项属性。唯一要注意的是：
+```
+wndClass.lpfnWndProc = WndProc;		//设置指向窗口过程函数的指针
+```
 
+
+下面是整个项目的完整代码：
 ```
 //------------------------------【程序说明】-----------------------------
 // 程序名称：GameCore
@@ -192,7 +222,8 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
 		 WINDOW_HEIGHT,NULL,NULL,hInstance,NULL);
 
 	 //【4】窗口创建四步曲之四：窗口的移动、显示与更新
-	 MoveWindow(hwnd,250,80,WINDOW_WIDTH,WINDOW_HEIGHT,true);	//调整窗口显示时的位置，使窗口左上角位于(250,80)处
+	 //调整窗口显示时的位置，使窗口左上角位于(250,80)处
+	 MoveWindow(hwnd,250,80,WINDOW_WIDTH,WINDOW_HEIGHT,true);	
 	 ShowWindow(hwnd,nShowCmd);	//调用ShowWindow函数来显示窗口
 	 UpdateWindow(hwnd);	//对窗口进行更新，就像我们买了房子要装修一样
 
