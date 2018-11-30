@@ -94,6 +94,8 @@ L"你好，Visual Studio! "其中L表示我们要把字符串"你好，Visual St
 |h|handle|Windows对象句柄|hWnd|
 |lpfn|callback|指向CALLBACK函数的远指针|lpfnName|
 
+在Windows程序中，有各种各样的资源，比如窗口、图标、光标等。系统创建这些资源时会为它们分配内存，并返回标识这些资源的标识号。这些标识号就是句柄。handle
+
 关键字字符组合表格如下：
 
 | 描述内容       | 使用的关键字母组合   |
@@ -165,7 +167,81 @@ WNDCLASSEX wndClass = { 0 };	//用WINDCLASSEX定义一个窗口类
 ```
 wndClass.lpfnWndProc = WndProc;		//设置指向窗口过程函数的指针
 ```
+这里先介绍一下，针对Windows的消息处理机制，窗口过程函数被调用的过程：
+- 第一步：在设计窗口类的时候，将窗口过程函数的地址赋值给lpfnWndProc成员变量。
+- 第二步：调用Regsiter(&Wndclass)注册窗口类，那么系统就有了我们所编写的窗口过程函数的地址。
+- 第三步：当应用程序接收到某一窗口的消息时，调用DispatchMessage(&msg)将消息回传给系统。系统则利用先前注册窗口类时得到的函数指针，调用窗口过程函数对消息进行处理。
 
+### 【2】窗口创建四部曲之二：注册窗口类
+```
+if( !RegisterClassEx(&wndClass))
+		 return -1;
+```
+
+### 【3】窗口创建四部曲之三：正式创建窗口
+得到窗口句柄，具体函数定义可以在MSDN查到。
+```
+HWND hwnd = CreateWindow(L"ForTheDreamOfGameDevelop",WINDOW_TITLE,	//创建窗口函数CreateWindow
+		 WS_OVERLAPPEDWINDOW,CW_USEDEFAULT,CW_USEDEFAULT,WINDOW_WIDTH,
+		 WINDOW_HEIGHT,NULL,NULL,hInstance,NULL);
+```
+
+### 【4】窗口创建四步曲之四：窗口的移动、显示与更新
+```
+	MoveWindow(hwnd,250,80,WINDOW_WIDTH,WINDOW_HEIGHT,true);	
+	ShowWindow(hwnd,nShowCmd);	//调用ShowWindow函数来显示窗口
+	UpdateWindow(hwnd);	//对窗口进行更新，就像我们买了房子要装修一样
+```
+UpdateWindow间WM_PAINT消息直接发送给了窗口过程函数进行处理，而没有放到我们前面所说的消息队列里。
+
+
+### 【5】消息循环过程
+```
+	 MSG msg = {0};	//定义并初始化msg
+	 while(msg.message != WM_QUIT)	//使用while循环，如果消息不是WM_QUIT，就继续循环
+	 {
+		if(PeekMessage(&msg,0,0,0,PM_REMOVE))	//查看应用程序消息队列，有消息时将队列中的消息派发出去
+		{
+			TranslateMessage(&msg);	//将虚拟键消息转换为字符消息
+			DispatchMessage(&msg);	//分发一个消息给窗口程序
+		}
+	 }
+```
+无论应用程序消息队列是否有消息，PeekMessage函数都立即返回，程序的得以继续执行后面的语句（无消息则执行其他指令，有消息时一般要将消息派发出去，在执行其他指令）
+
+而GetMessage函数只有在消息队列中有消息时才返回，队列中无消息就会一直等，知道下一个消息出现时才返回。
+
+### 【6】窗口类的注销
+```
+UnregisterClass(L"ForTheDreamOfGameDevelop",wndClass.hInstance);	//程序准备结束，注销窗口类
+```
+
+### Windows程序的“中枢神经”——窗口过程函数
+描述：窗口过程函数WndProc，对窗口消息进行处理。其中函数名可以随意取，只要后面的参数匹配就OK了。
+```
+LRESULT CALLBACK  WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+	switch(message)	//switch语句开始
+	{
+	case WM_PAINT:	//若是客户区重绘消息
+		ValidateRect(hwnd,NULL);	//更新客户区的显示
+		break;	
+	case WM_KEYDOWN:
+		if(wParam == VK_ESCAPE)	//如果按下的键是ESC
+			DestroyWindow(hwnd);	//销毁窗口，并发送一条WM_DESTROY消息
+		break;
+
+	case WM_DESTROY:
+		PostQuitMessage(0);	//向系统表明有个线程有终止请求。用来响应WM_DESTROY消息
+		break;		//跳出该switch语句
+
+	default:	//若上述case条件都不符合
+		return DefWindowProcW(hwnd,message,wParam,lParam);	//调用默认的窗口过程
+	}
+
+	return 0;
+}
+```
 
 下面是整个项目的完整代码：
 ```
@@ -272,4 +348,4 @@ LRESULT CALLBACK  WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 - [GameCore源代码目录](https://github.com/xuyicpp/geme-beginner/tree/master/Windows%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E4%B9%8B%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/windows%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/GameCore/GameCore)
 
-
+现在我们就有了一个窗口组件了，后面的学习都要在这个窗口组件上进行。RUA~
