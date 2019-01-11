@@ -1,5 +1,6 @@
 # 游戏开发者的学习旅程
 A Study Path for Game Development Beginner
+主要参考Miloyip的game-programmer：https://github.com/miloyip/game-programmer
 
 ## [《Windows游戏编程之从零开始》](https://github.com/xuyicpp/geme-beginner/tree/master/Windows%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E4%B9%8B%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B)
 
