@@ -1,0 +1,15 @@
+
+*.user
+*.vcxproj
+*.idb
+*.log
+*.exe
+*.tlog
+*.ipch
+*.obj
+*.filters
+*.sln
+*.db
+*.ilk
+*.pdb
+DX11/DX11_Initialization/.vs/DX11_Initialization/v15/.suo
