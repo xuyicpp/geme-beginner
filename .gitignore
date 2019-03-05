@@ -16,4 +16,5 @@ DX11/DX11_Initialization/.vs/DX11_Initialization/v15/.suo
 Library/
 Logs/
 Packages/
-
+.vs/
+*.csproj
