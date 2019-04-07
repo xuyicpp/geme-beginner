@@ -38,7 +38,7 @@ public class NewBehaviourScript : MonoBehaviour
         //Debug.Log(Encoding.UTF8.GetBytes("你好").Length);
         tcpSocket.Send(Encoding.UTF8.GetBytes(json));
         byte[] bt = new byte[1024];
-        int messgeLength = tcpSocket.Receive(bt);
+        //int messgeLength = tcpSocket.   (bt);
         //Debug.Log(Encoding.UTF8.GetString(bt));
         string str = Encoding.UTF8.GetString(bt);
         Debug.Log(str);

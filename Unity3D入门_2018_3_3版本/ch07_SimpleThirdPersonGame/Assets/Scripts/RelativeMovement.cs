@@ -62,8 +62,8 @@ public class RelativeMovement : MonoBehaviour
         RaycastHit hit;
         if (_vertSpeed < 0 && Physics.Raycast(transform.position, Vector3.down, out hit))
         {
-            //float check = (_charController.height + _charController.radius) / 1.9f;
-            float check = (_charController.height/2 + _charController.radius) -0.05f;
+            float check = (_charController.height + _charController.radius) / 1.9f;
+            //float check = (_charController.height/2 + _charController.radius) -0.05f;
             hitGround = hit.distance <= check;  // to be sure check slightly beyond bottom of capsule
         }
         _animator.SetFloat("Speed", movement.sqrMagnitude);
